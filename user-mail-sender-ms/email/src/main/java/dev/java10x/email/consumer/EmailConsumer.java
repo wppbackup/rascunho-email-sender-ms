@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmailConsumer {
-    @RabbitListener
+
+    @RabbitListener(queues = "email-queue")
     public void listenEmailQueue(@Payload String message) {
+
         System.out.println("Received from queue: " + message);
     }
 }
